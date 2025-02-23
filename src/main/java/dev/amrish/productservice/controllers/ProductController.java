@@ -4,6 +4,7 @@ package dev.amrish.productservice.controllers;
 import dev.amrish.productservice.dtos.CreateProductRequestDto;
 import dev.amrish.productservice.models.Product;
 import dev.amrish.productservice.services.ProductService;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -15,7 +16,7 @@ import java.util.List;
 public class ProductController {
     private ProductService productService;
 
-    ProductController(ProductService productService){
+    ProductController(@Qualifier("selfProductService") ProductService productService){
         this.productService = productService;
     }
 

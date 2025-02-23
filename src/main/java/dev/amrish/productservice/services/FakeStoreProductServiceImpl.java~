@@ -35,7 +35,7 @@ public class FakeStoreProductServiceImpl implements ProductService{
                         url,
                         FakeStoreProductDto.class
                 );
-        FakeStoreProductDto fakeStoreProductDto = new FakeStoreProductDto(responseEntity);
+        FakeStoreProductDto fakeStoreProductDto = responseEntity.getBody();
 
         return toProduct(fakeStoreProductDto);
     }

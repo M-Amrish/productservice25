@@ -1,7 +1,6 @@
 package dev.amrish.productservice.models;
 
-import jakarta.persistence.Id;
-import jakarta.persistence.MappedSuperclass;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 import java.util.Date;
@@ -11,6 +10,7 @@ import java.util.Date;
 @MappedSuperclass
 public class BaseModel {
     @Id
+    @GeneratedValue(strategy =  GenerationType.AUTO)
     private Long id;
     private Date createedAt;
     private Date updateddAt;
