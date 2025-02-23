@@ -1,5 +1,7 @@
 package dev.amrish.productservice.models;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.ManyToOne;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -9,27 +11,19 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Product {
-
-    private Long id;
+@Entity
+public class Product extends BaseModel{
 
     private String title;
 
     private Double price;
 
     private String description;
-
+    @ManyToOne
     private Category category;
 
     private String imageUrl;
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     public String getTitle() {
         return title;
