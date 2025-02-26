@@ -16,7 +16,7 @@ import java.util.List;
 public class ProductController {
     private ProductService productService;
 
-    ProductController(@Qualifier("selfProductService") ProductService productService){
+    public ProductController(@Qualifier("fakeStoreProductService") ProductService productService) {
         this.productService = productService;
     }
 
@@ -30,12 +30,14 @@ public class ProductController {
                 createProductRequestDto.getPrice()
         );
     }
-
+    // Jackson
     @GetMapping("/{id}")
     public Product getProductById(@PathVariable("id") Long id) {
        return productService.getProductById(id);
     }
 
+    // ResponseEntity contains everything that a response requires:
+    // Data, Status code and headers
     @GetMapping("/all")
     public  ResponseEntity <List<Product>> getAllProducts() {
 

@@ -5,7 +5,6 @@ import dev.amrish.productservice.models.Category;
 import dev.amrish.productservice.models.Product;
 import dev.amrish.productservice.respositories.CategoryRepository;
 import dev.amrish.productservice.respositories.ProductRepository;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -15,6 +14,7 @@ public class SelfProductService implements ProductService{
 
     private CategoryRepository categoryRepository;
     private ProductRepository productRepository;
+
 
     SelfProductService(CategoryRepository categoryRepository,
                        ProductRepository productRepository ){
@@ -42,6 +42,8 @@ public class SelfProductService implements ProductService{
             categoryFromDatabase  = category;
             // categoryRepository.save(category);
         }
+        // If category was found from DB, then no new category will be created
+        // If category is not found in the DB, a new category will be created because of cascade persist type
         product.setCategory(categoryFromDatabase);
 
         List<Product> productsTemp = categoryFromDatabase.getProducts();
