@@ -2,6 +2,8 @@ package dev.amrish.productservice.respositories;
 
 import dev.amrish.productservice.models.Product;
 import dev.amrish.productservice.respositories.projections.ProductWithIdAndTitle;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -26,5 +28,5 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
     @Query("select p.id, p.title from Product p where p.title = :title and p.id = :id")
     ProductWithIdAndTitle getProductWithSpecificTitleAndId2(@Param("title") String title, @Param("id") Long id);
 
-
+    Page<Product> findByTitleContaining(String title, Pageable pageable);
 }

@@ -10,12 +10,10 @@ import java.util.Date;
 @MappedSuperclass
 public class BaseModel {
     @Id
-    @GeneratedValue(strategy =  GenerationType.IDENTITY)
+    @GeneratedValue(strategy =  GenerationType.AUTO)
     private Long id;
     private Date createedAt;
     private Date updateddAt;
     private boolean isDeleted;
-
-
 
 }
