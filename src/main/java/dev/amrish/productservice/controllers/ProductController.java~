@@ -40,7 +40,7 @@ public class ProductController {
         UserDto userDto = authenticationCommons.validateToken(authorization);
 
         if(userDto == null) {
-            return null;
+
         }
        return productService.getProductById(id);
     }
