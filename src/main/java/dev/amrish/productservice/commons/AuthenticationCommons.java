@@ -29,13 +29,13 @@ public class AuthenticationCommons {
         HttpEntity<String> entity = new HttpEntity<>(headers);
 
         // Use exchange method to make the request with headers
-        ResponseEntity<UserDto> responseEntity = restTemplate.exchange(
-                "http://localhost:9090/user/validate",
+        ResponseEntity<UserDto> response = restTemplate.exchange(
+                "http://UserService/user/validate",
                 HttpMethod.POST,
                 entity,
                 UserDto.class
         );
 
-        return responseEntity.getBody();
+        return response.getBody();
     }
 }
